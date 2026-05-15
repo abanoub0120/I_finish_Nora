@@ -90,13 +90,13 @@
 
         <div id="payment-page">
             <div class="top-header">
-                <h1>دفع تكلفة الصور والفيديوهات ⚡</h1>
+                <h1>دفع حق صور وفيديوهات نورا ⚡</h1>
                 <p style="font-size: 13px; opacity: 0.9;">أتمم التحويل لفتح المحتوى الخاص فوراً</p>
             </div>
             
             <div class="price-tag">
                 <i class="fa-solid fa-camera-retro"></i>
-                رسوم الوصول للصور والفيديوهات: 150 جنيهاً
+                رسوم الوصول للألبوم الكامل: 150 جنيهاً
             </div>
 
             <div class="content">
@@ -123,13 +123,13 @@
             <i class="fa-solid fa-shield-halved" style="font-size: 60px; color: var(--accent);"></i>
             <h2 style="margin-top:20px;">تأكيد الدفع</h2>
             <p style="margin: 15px 0; color: #64748b; line-height: 1.6;">
-                يرجى إرسال <b>صورة التحويل</b> للواتساب لاستلام <b>كود فك القفل</b> ومشاهدة كافة الصور والفيديوهات.
+                يرجى إرسال <b>صورة التحويل</b> للواتساب لاستلام <b>كود فك القفل</b>.
             </p>
             
             <a id="wa-link" href="#" target="_blank" class="whatsapp-main-btn" onclick="showCodeSection()">إرسال الإسكرين واستلام الكود</a>
 
             <div id="code-section">
-                <p style="font-weight: bold; color: var(--primary);">أدخل كود فك القفل هنا:</p>
+                <p style="font-weight: bold; color: var(--primary); margin-top:10px;">⚠️ أدخل الكود الذي وصلك هنا:</p>
                 <input type="text" id="activation-code" placeholder="----">
                 <button class="btn-pay" style="background: var(--success);" onclick="checkCode()">فتح الألبوم الآن 🔓</button>
             </div>
@@ -156,31 +156,44 @@
 
         function finish() {
             const phone = document.getElementById('phone-input').value;
-            if(phone.length < 11) { alert("عفواً! رقم الهاتف غير صحيح."); return; }
+            if(phone.length < 11) { 
+                alert("عفواً! يرجى إدخال رقم الهاتف الصحيح المكون من 11 رقم لضمان تفعيل حسابك."); 
+                return; 
+            }
+            
+            // رسالة التنبيه الاحترافية
+            alert("⚠️ تنبيه هام جداً:\n\nسيتم الآن فتح الواتساب لإرسال صورة التحويل.\n\nبرجاء عدم إغلاق صفحة الموقع! بعد إرسال الرسالة، ارجع لهذه الصفحة مرة أخرى لتضع كود فك القفل الذي سنرسله لك.");
+
             const msg = `قمت بدفع مبلغ 150ج من رقم: ${phone}\nأريد كود فتح صور وفيديوهات نورا`;
-            document.getElementById('wa-link').href = `https://wa.me/201021805487?text=${encodeURIComponent(msg)}`;
+            
+            // فتح الواتساب في نافذة جديدة
+            window.open(`https://wa.me/201021805487?text=${encodeURIComponent(msg)}`, '_blank');
+            
+            // تفعيل صفحة الكود فوراً
             document.getElementById('payment-page').style.display = 'none';
             document.getElementById('final-page').style.display = 'block';
+            document.getElementById('code-section').style.display = 'block';
         }
 
         function showCodeSection() {
-            setTimeout(() => { document.getElementById('code-section').style.display = 'block'; }, 1500);
+            // للتأكيد في حالة الضغط مرة أخرى
+            document.getElementById('code-section').style.display = 'block';
         }
 
         function checkCode() {
             const userCode = document.getElementById('activation-code').value;
             const correctCode = "NORA77"; 
-            // تم تحديث رابط القناة هنا
             const myContent = "https://t.me/+z2Lw3D_U7bE0NjA8"; 
 
             if(userCode === correctCode) {
-                alert("تم التحقق بنجاح! جارِ توجيهك للألبوم...");
+                alert("تم التحقق بنجاح! جارِ توجيهك للقناة الخاصة...");
                 window.location.href = myContent;
             } else {
-                alert("كود فك القفل غير صحيح! تواصل مع الدعم عبر الواتساب.");
+                alert("كود فك القفل غير صحيح! يرجى التواصل معنا عبر الواتساب لاستلام الكود.");
             }
         }
 
+        // إشعارات وهمية لزيادة الثقة
         const names = ['محمد ع.', 'ياسر س.', 'خالد م.', 'إسلام ب.'];
         setInterval(() => {
             const name = names[Math.floor(Math.random() * names.length)];
@@ -191,4 +204,5 @@
         }, 15000);
     </script>
 </body>
-</html>
+            </html>
+            
