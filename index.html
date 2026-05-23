@@ -3,89 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>انتهى العرض</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">
+    <title>محتوى نورا VIP 👑</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        :root {
+            --gold: #ffd700;
+            --gold-glow: rgba(255, 215, 0, 0.5);
+            --neon-pink: #ff1493;
+            --pink-glow: rgba(255, 20, 147, 0.5);
+            --dark-bg: #0f0c29;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-light: #ffffff;
+        }
+
         body {
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #0f172a; /* خلفية داكنة احترافية */
-            color: white;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             font-family: 'Tajawal', sans-serif;
+            color: var(--text-light);
         }
 
-        .main-card {
-            text-align: center;
-            padding: 20px;
+        .container { width: 90%; max-width: 420px; text-align: center; }
+
+        h1 { 
+            color: var(--gold); margin-bottom: 30px; font-weight: 900;
+            text-shadow: 0 0 15px var(--gold-glow); font-size: 26px;
         }
 
-        /* الدائرة المركزية */
-        .status-circle {
-            width: 280px;
-            height: 280px;
-            background: radial-gradient(circle, #1e293b, #0f172a);
-            border: 6px solid #f43f5e; /* لون أحمر للدلالة على الانتهاء */
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 30px;
-            box-shadow: 0 0 40px rgba(244, 63, 94, 0.3);
-            animation: pulse 2s infinite;
+        .option-card {
+            background: var(--card-bg); backdrop-filter: blur(10px);
+            padding: 30px 20px; border-radius: 25px; margin-bottom: 25px;
+            cursor: pointer; transition: all 0.4s ease;
+            display: flex; flex-direction: column; align-items: center; gap: 15px;
+            position: relative; border: 2px solid rgba(255,255,255,0.1);
         }
 
-        .status-circle h2 {
-            margin: 0;
-            font-size: 28px;
-            color: #f43f5e;
-        }
+        .card-tg { border-color: rgba(255, 215, 0, 0.3); }
+        .card-tg:hover { border-color: var(--gold); box-shadow: 0 0 20px var(--gold-glow); }
+        
+        .card-wa { border-color: rgba(255, 20, 147, 0.3); }
+        .card-wa:hover { border-color: var(--neon-pink); box-shadow: 0 0 20px var(--pink-glow); }
 
-        /* زر قناة التليجرام */
-        .tg-link {
-            display: inline-block;
-            background: #0088cc;
-            color: white;
-            text-decoration: none;
-            padding: 15px 45px;
-            border-radius: 50px;
-            font-size: 22px;
-            font-weight: bold;
-            transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(0, 136, 204, 0.4);
-        }
+        .option-card h2 { margin: 0; font-size: 21px; color: var(--text-light); font-weight: 700; }
+        .price { font-size: 28px; font-weight: 900; }
+        .tg-text { color: var(--gold); }
+        .wa-text { color: var(--neon-pink); }
+        .icon-box { font-size: 45px; margin-bottom: 5px; }
 
-        .tg-link:hover {
-            transform: scale(1.05);
-            background: #0099e6;
-        }
-
-        /* حركة نبض خفيفة للدائرة */
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 20px rgba(244, 63, 94, 0.3); }
-            50% { transform: scale(1.02); box-shadow: 0 0 50px rgba(244, 63, 94, 0.5); }
-            100% { transform: scale(1); box-shadow: 0 0 20px rgba(244, 63, 94, 0.3); }
-        }
+        #code-section { display: none; background: var(--card-bg); backdrop-filter: blur(15px); padding: 30px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.1); }
+        .alert-box { background: rgba(255, 215, 0, 0.1); color: var(--gold); padding: 15px; border-radius: 15px; border: 1px solid rgba(255, 215, 0, 0.3); font-size: 14px; margin-bottom: 20px; }
+        .btn { width: 100%; padding: 18px; border-radius: 15px; border: none; font-size: 18px; font-weight: bold; color: white; cursor: pointer; transition: 0.3s; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .btn-wa { background: #25D366; }
+        .btn-submit { background: linear-gradient(45deg, var(--neon-pink), #ff69b4); }
+        input { width: 100%; padding: 18px; border-radius: 15px; border: 2px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: var(--gold); text-align: center; font-size: 20px; font-weight: 900; margin-bottom: 20px; box-sizing: border-box; }
+        .back-btn { background: none; border: none; color: rgba(255,255,255,0.5); font-weight: bold; cursor: pointer; font-size: 16px; }
     </style>
 </head>
 <body>
 
-    <div class="main-card">
-        <!-- الدائرة وبداخلها النص -->
-        <div class="status-circle">
-            <h2>تم انتهاء</h2>
-            <h2 style="font-size: 40px;">العرض</h2>
-            <p style="margin-top: 10px; font-size: 14px; color: #cbd5e1;">الرابط غير متاح الآن</p>
+    <div class="container">
+        <div id="selection-section">
+            <h1>أهلاً بك في عالم الدلع مع نورا 👑</h1>
+
+            <div class="option-card card-tg" onclick="goToTelegram()">
+                <i class="fa-solid fa-crown icon-box tg-text"></i>
+                <h2>VIP<br>3 مكالمات كاميرا مع نورا</h2>
+                <div class="price tg-text">250 جنيهاً</div>
+            </div>
+
+            <div class="option-card card-wa" onclick="showCodeSection()">
+                <i class="fa-solid fa-gem icon-box wa-text"></i>
+                <h2>11 فيديو حصري لنورا</h2>
+                <div class="price wa-text">75 جنيهاً</div>
+            </div>
         </div>
 
-        <!-- رابط القناة بالأسفل -->
-        <p style="margin-bottom: 20px; font-size: 18px; color: #94a3b8;">لمتابعة العروض الجديدة:</p>
-        <a href="https://t.me/+q09P_4XEXUQwZWY0" class="tg-link">رابط القناة الرسمي 🔗</a>
+        <div id="code-section">
+            <h2 style="color: white; margin-bottom: 20px;">الدخول الخاص 🔒</h2>
+            <div class="alert-box">
+                <i class="fa-solid fa-triangle-exclamation"></i> 
+                تنبيه هام: اطلب الكود من الواتساب، حوّل الـ 75ج، ثم عُد لإدخال الكود.
+            </div>
+
+            <button class="btn btn-wa" onclick="goToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> طلب الكود من الواتساب
+            </button>
+
+            <div style="margin: 20px 0 10px; color: rgba(255,255,255,0.7);">أدخل الكود هنا:</div>
+            <input type="text" id="activationCode" placeholder="NORA---">
+            
+            <button class="btn btn-submit" onclick="verifyCode()">فتح الفيديوهات الآن 🔥</button>
+            <button class="back-btn" onclick="goBack()">الرجوع للقائمة</button>
+        </div>
     </div>
 
+    <script>
+        function goToTelegram() {
+            const msg = "مرحباً نورا، أنا قادم من الموقع الخاص بك. أريد حجز عرض الـ VIP: 3 مكالمات كاميرا معكِ بسعر 250 جنيه.";
+            window.open('https://t.me/AASFX?text=' + encodeURIComponent(msg), '_blank');
+        }
+
+        function showCodeSection() {
+            document.getElementById('selection-section').style.display = 'none';
+            document.getElementById('code-section').style.display = 'block';
+        }
+
+        function goBack() {
+            document.getElementById('code-section').style.display = 'none';
+            document.getElementById('selection-section').style.display = 'block';
+        }
+
+        function goToWhatsApp() {
+            // الرسالة المحدثة التي طلبتها
+            const msg = "أهلاً، أريد كود الدخول الخاص بقناة الـ 11 فيديو حصري لنورا (عرض 75 جنيه).\n\nيرجى إرسال رقم المحفظة المتاح للتحويل عليه، وسأقوم بإرسال إثبات التحويل فوراً لاستلام الكود.";
+            window.open('https://wa.me/201021805487?text=' + encodeURIComponent(msg), '_blank');
+        }
+
+        function verifyCode() {
+            const codeInput = document.getElementById('activationCode').value.trim();
+            const correctCode = "NORA201";
+            const channelLink = "https://t.me/+YJOYxuYst4ozNGE0";
+
+            if (codeInput === correctCode) {
+                alert("تم التحقق بنجاح! استمتع بالمحتوى 🔥");
+                window.location.href = channelLink;
+            } else {
+                alert("❌ الكود غير صحيح! يرجى التأكد من الكود الذي استلمته.");
+            }
+        }
+    </script>
 </body>
 </html>
